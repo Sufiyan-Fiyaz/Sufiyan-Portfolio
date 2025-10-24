@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Dark Theme with Purple Accents */
+@layer base {
+  :root {
+    /* Dark Theme Colors */
+    --background: 228 25% 8%;          /* Deep navy background */
+    --foreground: 240 10% 96%;         /* Light text */
+    
+    --card: 228 20% 12%;               /* Card background */
+    --card-foreground: 240 10% 96%;    /* Card text */
+    
+    --popover: 228 20% 12%;
+    --popover-foreground: 240 10% 96%;
+    
+    /* Purple Accent System */
+    --primary: 262 83% 58%;            /* Primary purple */
+    --primary-foreground: 240 10% 96%;
+    --primary-glow: 262 83% 68%;       /* Lighter purple for glows */
+    
+    --secondary: 228 20% 15%;          /* Secondary cards */
+    --secondary-foreground: 240 5% 84%;
+    
+    --muted: 228 15% 18%;              /* Muted backgrounds */
+    --muted-foreground: 240 5% 64%;    /* Muted text */
+    
+    --accent: 262 83% 58%;             /* Accent color */
+    --accent-foreground: 240 10% 96%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 240 10% 96%;
+    
+    --border: 228 15% 22%;             /* Subtle borders */
+    --input: 228 15% 18%;
+    --ring: 262 83% 58%;
+    
+    --radius: 1rem;
+    
+    /* Custom Portfolio Colors */
+    --portfolio-bg: 228 25% 8%;        /* Main background */
+    --portfolio-card: 228 20% 12%;     /* Card backgrounds */
+    --portfolio-accent: 262 83% 58%;   /* Purple accent */
+    --portfolio-accent-hover: 262 83% 68%; /* Hover state */
+    --portfolio-text: 240 10% 96%;     /* Primary text */
+    --portfolio-text-muted: 240 5% 64%; /* Muted text */
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(250 100% 67%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(228 20% 12%) 0%, hsl(228 25% 15%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(262 83% 58% / 0.3) 0%, hsl(250 100% 67% / 0.3) 100%);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 40px -10px hsl(262 83% 58% / 0.3);
+    --shadow-card: 0 8px 32px -8px hsl(228 25% 4% / 0.5);
+    --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+  /* Responsive utilities */
+  html {
+    scroll-behavior: smooth;
+    /* Optimize scrolling performance */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Optimize rendering performance */
+  * {
+    will-change: auto;
+  }
+  
+  /* Improve image and animation performance */
+  img, video {
+    will-change: transform;
+  }
+  
+  /* Optimize transitions */
+  .transition-all,
+  .transition-transform {
+    will-change: transform, opacity;
+  }
+
+  /* Ensure proper viewport handling */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}
+
+/* Auto-scrolling container */
+.scroller {
+  max-width: 100%;
+}
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller-inner {
+  width: max-content;
+  flex-wrap: nowrap;
+  display: flex;
+  animation: scroll 50s linear infinite;
+}
+
+.scroller:hover .scroller-inner {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem * 7)); /* 7 is the number of testimonials */
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .scroller[data-animated="true"] {
+    overflow-x: auto;
+  }
+  .scroller[data-animated="true"] .scroller-inner {
+    animation: none;
+    display: flex;
+  }
+}
