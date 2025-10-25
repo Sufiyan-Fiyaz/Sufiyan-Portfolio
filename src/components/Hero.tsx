@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Handshake, Github, Linkedin } from "lucide-react";
 
-import profileImage from "@/assets/Sufiyan-Profile.jpg";
+import profileImage from "@/assets/Sufiyan-Profile.png";
 
 const Hero = () => {
   const stats = [
